@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lv2/common/const/data.dart';
 import 'package:flutter_lv2/restaurant/component/retaurant_card.dart';
 import 'package:flutter_lv2/restaurant/model/restaurant_model.dart';
+import 'package:flutter_lv2/restaurant/view/restaurant_detail_screen.dart';
 
 class RestaurantScreen extends StatelessWidget {
   const RestaurantScreen({super.key});
@@ -15,7 +16,9 @@ class RestaurantScreen extends StatelessWidget {
     final resp = await dio.get(
       'http://$ip/restaurant',
       options: Options(
-        headers: {'authorization': 'Bearer $accessToken '},
+        headers: {
+          'authorization': 'Bearer $accessToken',
+        },
       ),
     );
 
@@ -31,7 +34,9 @@ class RestaurantScreen extends StatelessWidget {
             future: paginateRestaurant(),
             builder: ((context, AsyncSnapshot<List> snapshot) {
               if (!snapshot.hasData) {
-                return Container();
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               }
 
               return ListView.separated(
@@ -42,8 +47,16 @@ class RestaurantScreen extends StatelessWidget {
                   final pItem = RestaurantModel.fromJson(
                     json: item,
                   );
-                  return RestaurantCard.fromModel(
-                    model: pItem,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            RestaurantDetailScreen(id: pItem.id),
+                      ));
+                    },
+                    child: RestaurantCard.fromModel(
+                      model: pItem,
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) {
