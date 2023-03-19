@@ -162,7 +162,7 @@ class _RestaurantDetailScreenState
               padding: const EdgeInsets.only(
                 top: 16.0,
               ),
-              child: ProductCard.fromModel(
+              child: ProductCard.fromRestaurantProductModel(
                 model: model,
               ),
             );
