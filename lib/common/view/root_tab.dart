@@ -3,8 +3,11 @@ import 'package:flutter_lv2/common/const/colors.dart';
 import 'package:flutter_lv2/common/layout/default_layout.dart';
 import 'package:flutter_lv2/product/view/product_screen.dart';
 import 'package:flutter_lv2/restaurant/view/restaurant_screen.dart';
+import 'package:flutter_lv2/user/view/profile_screen.dart';
 
 class RootTab extends StatefulWidget {
+  static String get routeName => 'home';
+
   const RootTab({super.key});
 
   @override
@@ -67,7 +70,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outlined),
-            label: '프로필필',
+            label: '프로필',
           ),
         ],
       ),
@@ -78,7 +81,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           const RestaurantScreen(),
           const ProductScreen(),
           Container(child: const Text('주문')),
-          Container(child: const Text('프로필')),
+          const ProfileScreen(),
         ],
       ),
     );
