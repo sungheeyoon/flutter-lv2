@@ -22,8 +22,10 @@ class AuthRepository {
     required this.dio,
   });
 
-  Future<LoginResponse> login(
-      {required String username, required String password}) async {
+  Future<LoginResponse> login({
+    required String username,
+    required String password,
+  }) async {
     final serialized = DataUtils.plainToBase64('$username:$password');
 
     final resp = await dio.post(
