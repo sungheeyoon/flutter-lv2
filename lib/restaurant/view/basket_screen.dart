@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lv2/common/const/colors.dart';
 import 'package:flutter_lv2/common/layout/default_layout.dart';
-import 'package:flutter_lv2/order/repository/order_provider.dart';
+import 'package:flutter_lv2/order/provider/order_provider.dart';
 import 'package:flutter_lv2/order/view/order_done_screen.dart';
 import 'package:flutter_lv2/product/component/product_card.dart';
 import 'package:flutter_lv2/user/provider/basket_provider.dart';
