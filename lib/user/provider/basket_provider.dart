@@ -48,6 +48,10 @@ class BasketProvider extends StateNotifier<List<BasketItemModel>> {
     );
   }
 
+  emptyBasket() {
+    state = [];
+  }
+
   Future<void> addToBasket({
     required ProductModel product,
   }) async {

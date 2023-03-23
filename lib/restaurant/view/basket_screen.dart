@@ -117,6 +117,7 @@ class BasketScreen extends ConsumerWidget {
                             await ref.read(orderProvider.notifier).postOrder();
 
                         if (resp) {
+                          ref.read(basketProvider.notifier).emptyBasket();
                           context.goNamed(OrderDoneScreen.routeName);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
